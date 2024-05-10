@@ -1,7 +1,7 @@
 package services
 
 import (
-	"myFirstGoGin/internal/schemas"
+	"github.com/virak1510/gin-gorm-starter/internal/schemas"
 
 	"gorm.io/gorm"
 )

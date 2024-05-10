@@ -1,9 +1,10 @@
 package controllers
 
 import (
-	"myFirstGoGin/internal/models"
-	"myFirstGoGin/internal/services"
 	"net/http"
+
+	"github.com/virak1510/gin-gorm-starter/internal/models"
+	"github.com/virak1510/gin-gorm-starter/internal/services"
 
 	"github.com/gin-gonic/gin"
 )

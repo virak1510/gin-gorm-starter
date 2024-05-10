@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"myFirstGoGin/internal/schemas"
+
+	"github.com/virak1510/gin-gorm-starter/internal/schemas"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

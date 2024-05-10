@@ -1,7 +1,7 @@
 package main
 
 import (
-	"myFirstGoGin/internal/routes"
+	"github.com/virak1510/gin-gorm-starter/internal/routes"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

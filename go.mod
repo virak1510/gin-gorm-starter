@@ -1,4 +1,4 @@
-module myFirstGoGin
+module github.com/virak1510/gin-gorm-starter
 
 go 1.22.1
 

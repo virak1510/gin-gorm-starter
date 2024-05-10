@@ -1,7 +1,7 @@
 package services
 
 import (
-	"myFirstGoGin/internal/models"
+	"github.com/virak1510/gin-gorm-starter/internal/models"
 )
 
 func Login(user *models.User) *models.User {

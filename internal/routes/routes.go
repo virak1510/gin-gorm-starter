@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"myFirstGoGin/internal/controllers"
+	"github.com/virak1510/gin-gorm-starter/internal/controllers"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
