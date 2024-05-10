@@ -1,0 +1,23 @@
+# Ignore binary files
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Ignore vendor directory
+vendor/
+tmp/
+
+# Ignore build files
+build/
+
+# Ignore IDE specific files
+.idea/
+.vscode/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore configuration files with sensitive information
+config.yaml
