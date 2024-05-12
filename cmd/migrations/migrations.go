@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/virak1510/gin-gorm-starter/internal/schemas"
 
 	"gorm.io/driver/postgres"
@@ -11,7 +13,11 @@ import (
 
 func main() {
 	fmt.Println("migrating ....")
-	dsn := "host=localhost user=postgres password=2906 dbname=gorm port=5432 TimeZone=Asia/Phnom_Penh"
+	err := godotenv.Load()
+	if err != nil {
+		panic("failed to load .env file")
+	}
+	dsn := os.Getenv("DATABASE_URL")
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")

@@ -1,3 +1,7 @@
+# Ignore env 
+.env
+!.env.*
+
 # Ignore binary files
 *.exe
 *.dll
