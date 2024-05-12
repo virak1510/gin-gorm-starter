@@ -16,7 +16,7 @@ To get started with the Gin and Gorm starter project:
 1. Clone the repository: `git clone https://github.com/virak1510/gin-gorm-starter.git`
 2. Install the dependencies: `go mod download`
 3. Configure the project by modifying the configuration files in the `internal/configs` directory.
-4. Start the application: `go run main.go`
+4. Start the application: `go run ./cmd` or `air` if you install air
 
 ## Directory Structure
 
