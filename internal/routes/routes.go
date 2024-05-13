@@ -12,14 +12,15 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	// SECTION init controllers
 	var (
 		userConteroller = controllers.New(db)
+		authController  = controllers.NewAuthController(db)
 	)
 	// router.Use(middlewares.LoggingMiddleware())
 	// router.Use(middlewares.ErrorHandlerMiddleware())
 	// Public routes
 	public := router.Group("/api/v1/web")
 	{
-		public.GET("/register", controllers.Login)
-		public.POST("/login", controllers.Login)
+		public.GET("/register", authController.Register)
+		public.POST("/login", authController.Login)
 	}
 	// Protected routes
 	protected := router.Group("/api/v1/web")
