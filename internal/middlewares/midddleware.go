@@ -1,21 +1,51 @@
 package middlewares
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/golang-jwt/jwt/v5"
 )
 
+type Claims struct {
+	ID       uint   `json:"id"`
+	Username string `json:"username"`
+	jwt.RegisteredClaims
+}
+
+var jwtSecret = os.Getenv("JWT_SECRET")
+var jwtKey = []byte(jwtSecret)
+
 func AuthMiddleware() gin.HandlerFunc {
-	// need to implement
 	return func(c *gin.Context) {
-		c.Next()
-		if len(c.Errors) > 0 {
-			err := c.Errors.Last()
-			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
+		tokenString := c.GetHeader("Authorization")
+		if tokenString == "" {
+			c.JSON(http.StatusUnauthorized, gin.H{"error": "Missing Authorization header"})
+			c.Abort()
+			return
 		}
+
+		token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
+			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+				return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
+			}
+			return jwtKey, nil
+		})
+
+		if err != nil || !token.Valid {
+			c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid token"})
+			c.Abort()
+			return
+		}
+
+		userClaim := token.Claims.(*Claims)
+		c.Set("user", userClaim)
+
+		c.Next()
 	}
 }
 
